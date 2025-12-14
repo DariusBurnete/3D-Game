@@ -95,3 +95,9 @@ crashlytics-build.properties
 # By default, Addressables content builds will generate addressables_content_state.bin
 # TestRunner generated files
 InitTestScene*.unity*
+
+# Custom Assets
+/[Aa]ssets/Materials
+/[Aa]ssets/Materials.meta
+/[Aa]ssets/Starfield_Skybox
+/[Aa]ssets/Starfield_Skybox.meta
