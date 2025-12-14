@@ -97,7 +97,7 @@ crashlytics-build.properties
 InitTestScene*.unity*
 
 # Custom Assets
-/[Aa]ssets/Materials
+/[Aa]ssets/Materials/
 /[Aa]ssets/Materials.meta
-/[Aa]ssets/Starfield_Skybox
-/[Aa]ssets/Starfield_Skybox.meta
+/[Aa]ssets/Starfield Skybox/
+/[Aa]ssets/Starfield Skybox.meta
