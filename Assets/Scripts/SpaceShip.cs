@@ -8,17 +8,17 @@ public class SpaceShip : MonoBehaviour
     [Header("SpaceShip Movement Settings")]
 
     [SerializeField]
-    private float swerveTorque = 125f;
+    private float swerveTorque = 4f;
     [SerializeField]
-    private float pitchTorque = 125f;
+    private float pitchTorque = 5f;
     [SerializeField]
-    private float rollTorque = 125f;
+    private float rollTorque = 4f;
     [SerializeField]
-    private float thrust = 50f;
+    private float thrust = 20f;
     [SerializeField]
-    private float upThrust = 50f;
+    private float upThrust = 20f;
     [SerializeField]
-    private float strafeThrust = 50f;
+    private float strafeThrust = 20f;
 
     [SerializeField, Range(0.001f, 0.999f)]
     private float thrustGlideReduction = 0.96f;
