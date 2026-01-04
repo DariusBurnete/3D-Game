@@ -8,7 +8,7 @@ public class SpaceShip : MonoBehaviour
     [Header("SpaceShip Movement Settings")]
 
     [SerializeField]
-    private float swerveTorque = 4f;
+    private float swerveTorque = 7f;
     [SerializeField]
     private float pitchTorque = 5f;
     [SerializeField]
@@ -35,10 +35,13 @@ public class SpaceShip : MonoBehaviour
     private float upThrust1D;
     private float strafe1D;
 
+    StopCollision stopCollision;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
+        stopCollision = GetComponent<StopCollision>();
     }
 
     void FixedUpdate()
@@ -61,34 +64,26 @@ public class SpaceShip : MonoBehaviour
         rb.AddRelativeTorque(Mathf.Clamp(-pitchSwerve2D.y, -1f, 1f) * pitchTorque * Vector3.right);
         rb.AddRelativeTorque(Mathf.Clamp(pitchSwerve2D.x, -1f, 1f) * swerveTorque * Vector3.up);
 
-        if(thrust1D > 0.1f || thrust1D < -0.1f)
+        Vector3 thrustDir = transform.forward;
+        if (stopCollision != null && stopCollision.inContact)
         {
-            float currentThrust = thrust; // Used later for boost mechanic
-
-            rb.AddRelativeForce(thrust1D * currentThrust * Vector3.forward);
+            if (Vector3.Dot(thrustDir, -stopCollision.surfaceNormal) > 0f) return;
         }
+
+        if (Mathf.Abs(thrust1D) > 0.1f)
+            rb.AddRelativeForce(thrust1D * thrust * Vector3.forward);
         else
-        {
             LinearMovementDamp(thrustGlideReduction, 0, 0, 1);
-        }
 
-        if (upThrust1D > 0.1f || upThrust1D < -0.1f)
-        {
+        if (Mathf.Abs(upThrust1D) > 0.1f)
             rb.AddRelativeForce(upThrust1D * upThrust * Vector3.up);
-        }
         else
-        {
             LinearMovementDamp(upDownGlideReduction, 0, 1, 0);
-        }
 
-        if (strafe1D > 0.1f || strafe1D < -0.1f)
-        {
+        if (Mathf.Abs(strafe1D) > 0.1f)
             rb.AddRelativeForce(strafe1D * strafeThrust * Vector3.right);
-        }
         else
-        {
             LinearMovementDamp(leftRightGlideReduction, 1, 0, 0);
-        }
     }
 
     #region Input Setter Methods
@@ -117,4 +112,5 @@ public class SpaceShip : MonoBehaviour
         strafe1D = context.ReadValue<float>();
     }
     #endregion
+
 }

@@ -53,7 +53,7 @@ public class SolarSystem : MonoBehaviour
                 Vector3 direction = celestialB.position - celestialA.position;
                 float distance = direction.magnitude;
 
-                celestialA.AddForce(direction.normalized * G * (m1 * m2) / (distance * distance));
+                celestialA.AddForce((m1 * m2) * G * direction.normalized / (distance * distance));
             }
         }
     }
