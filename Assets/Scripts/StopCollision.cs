@@ -57,6 +57,4 @@ public class StopCollision : MonoBehaviour
         if (!(other.CompareTag("Planet") || other.CompareTag("Moon") || other.CompareTag("Sun"))) return;
         inContact = false;
     }
-
-    //to add another collider for interaction (not done) and a smaller one for limits (done, just make it smaller)
 }
