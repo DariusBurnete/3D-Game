@@ -8,8 +8,5 @@ public class EOSTInteract : MonoBehaviour, IInteractable
           Debug.Log("Interacted with EOSTInteract object.");
     }
 
-    public string GetPromptText()
-    {
-        return "Press 'C' to land";
-    }
+    public string GetPromptText() => "C";
 }
