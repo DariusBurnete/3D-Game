@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d34099e550b10a47aecb1aad99fffbf, type: 3}
+  m_Name: Scrap
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Scrap
+  icon: {fileID: 21300000, guid: a5235cccfae3f0a42a2b4cdcc79a13c6, type: 3}
+  description: 'A piece of metal, found in space. It may have belonged to a space
+    station or... some other traveller that didn''t make it... '
+  minPrice: 2.5
+  maxPrice: 4.5
+  itemType: Collectible
+  isSellable: 1
+  isEraseable: 1

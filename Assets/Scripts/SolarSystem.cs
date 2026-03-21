@@ -11,13 +11,23 @@ public class SolarSystem : MonoBehaviour
 
     void Start()
     {
+        EnsureCelestialIds();
+
         sun = GameObject.FindGameObjectWithTag("Sun");
         planets = GameObject.FindGameObjectsWithTag("Planet");
         moons = GameObject.FindGameObjectsWithTag("Moon");
 
         InitRigidBodies();
-        InitPlanetVelocities();
-        InitMoonVelocities();
+
+        if (GameStateManager.Instance != null && GameStateManager.Instance.HasSavedCelestialStates)
+        {
+            RestoreCelestialStates();
+        }
+        else
+        {
+            InitPlanetVelocities();
+            InitMoonVelocities();
+        }
     }
 
     void FixedUpdate()
@@ -53,7 +63,7 @@ public class SolarSystem : MonoBehaviour
                 Vector3 direction = celestialB.position - celestialA.position;
                 float distance = direction.magnitude;
 
-                celestialA.AddForce((m1 * m2) * G * direction.normalized / (distance * distance));
+                celestialA.AddForce(m1 * m2 * G * direction.normalized / (distance * distance));
             }
         }
     }
@@ -111,5 +121,51 @@ public class SolarSystem : MonoBehaviour
         }
 
         return parent;
+    }
+
+    void EnsureCelestialIds()
+    {
+        GameObject[] planets = GameObject.FindGameObjectsWithTag("Planet");
+        GameObject[] moons = GameObject.FindGameObjectsWithTag("Moon");
+
+        foreach (var obj in planets)
+        {
+            if (!obj.TryGetComponent(out CelestialStateId _))
+                obj.AddComponent<CelestialStateId>();
+        }
+
+        foreach (var obj in moons)
+        {
+            if (!obj.TryGetComponent(out CelestialStateId _))
+                obj.AddComponent<CelestialStateId>();
+        }
+    }
+
+    void RestoreCelestialStates()
+    {
+        CelestialStateId[] stateIds = FindObjectsByType<CelestialStateId>(FindObjectsSortMode.None);
+
+        foreach (CelestialStateId stateId in stateIds)
+        {
+            Rigidbody rb = stateId.GetComponent<Rigidbody>();
+            if (string.IsNullOrEmpty(stateId.UniqueId)) continue;
+            if (stateId == null) continue;
+            if (rb == null) continue;
+
+            if (GameStateManager.Instance.TryGetCelestialState(stateId.UniqueId, out CelestialRuntimeState state))
+            {
+                Quaternion rot = state.rotation;
+
+                if (rot == new Quaternion(0f, 0f, 0f, 0f))
+                    rot = Quaternion.identity;
+                else
+                    rot = Quaternion.Normalize(rot);
+
+                rb.position = state.position;
+                rb.rotation = rot;
+                rb.linearVelocity = state.linearVelocity;
+                rb.angularVelocity = state.angularVelocity;
+            }
+        }
     }
 }

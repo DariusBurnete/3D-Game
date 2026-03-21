@@ -8,6 +8,9 @@ TagManager:
   - Planet
   - Moon
   - InteractionCollider
+  - ShipCam
+  - StationCam
+  - TargetSurface
   layers:
   - Default
   - TransparentFX
