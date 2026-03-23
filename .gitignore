@@ -99,7 +99,11 @@ InitTestScene*.unity*
 # Custom Assets
 /[Aa]ssets/Materials/
 /[Aa]ssets/Materials.meta
-/[Aa]ssets/Starfield Skybox/
-/[Aa]ssets/Starfield Skybox.meta
+/[Aa]ssets/Skyboxes/
+/[Aa]ssets/Skyboxes.meta
 /[Aa]ssets/Imports/
 /[Aa]ssets/Imports.meta
+/[Aa]ssets/Sounds/
+/[Aa]ssets/Sounds.meta
+/[Aa]ssets/Andtech/
+/[Aa]ssets/Andtech.meta
