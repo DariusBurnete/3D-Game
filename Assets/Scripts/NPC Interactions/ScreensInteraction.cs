@@ -10,7 +10,8 @@ public enum ScreenMode
     Merchant,
     Mechanic,
     Upgrade,
-    WarpMap
+    WarpMap,
+    SceneMenu
 }
 
 public class ScreensInteraction : MonoBehaviour
@@ -32,7 +33,7 @@ public class ScreensInteraction : MonoBehaviour
     [SerializeField]
     private WarpMapUI warpMap;
 
-    public ScreenMode Mode { get; private set; } = ScreenMode.None;
+    public ScreenMode Mode { get; set; } = ScreenMode.None;
 
     private PlayerData playerData;
     private int TierIndex = 0;

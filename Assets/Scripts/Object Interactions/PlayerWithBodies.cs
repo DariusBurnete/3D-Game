@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(DockingController))]
 public class PlayerWithBodies : MonoBehaviour
@@ -10,10 +11,19 @@ public class PlayerWithBodies : MonoBehaviour
     private float interactionCooldownDuration = 0.35f;
     private float interactionCooldownTimer;
 
+    private string currentSceneName;
+
     public IInteractable CurrentInteractable => currentInteractable;
+
+    private void Start()
+    {
+        currentSceneName = SceneManager.GetActiveScene().name;
+    }
 
     private void Update()
     {
+        if (currentSceneName == "MainMenu") return;
+
         if (interactionCooldownTimer > 0f)
             interactionCooldownTimer -= Time.deltaTime;
 
@@ -95,6 +105,7 @@ public class PlayerWithBodies : MonoBehaviour
 
     public void ClearCurrentInteractable()
     {
+        if (InteractionUI.instance == null) return;
         currentInteractable = null;
         InteractionUI.instance.HideAll();
     }

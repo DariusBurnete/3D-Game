@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d34099e550b10a47aecb1aad99fffbf, type: 3}
   m_Name: Light Sensor
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: light_sensor
   itemName: Light Sensor
   icon: {fileID: 21300000, guid: 1aba64eaa98557e46a1fa6b0b68b4a9c, type: 3}
   description: 'Seems to be a simple light detection device. At least at first...

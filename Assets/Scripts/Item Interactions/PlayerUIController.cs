@@ -6,22 +6,23 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(DockingController))]
 public class PlayerUIController : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerUIScreen playerUIScreen;
-
     private SpaceShip ship;
     private PlayerData playerData;
     private DockingController dockingController;
+    private PlayerUIScreen playerUIScreen;
 
     private void Awake()
     {
         playerData = GetComponent<PlayerData>();
         ship = GetComponent<SpaceShip>();
         dockingController = GetComponent<DockingController>();
+        playerUIScreen = FindAnyObjectByType<PlayerUIScreen>();
     }
 
     private void Update()
     {
+        if (playerUIScreen == null) return;
+
         if (Keyboard.current.iKey.wasPressedThisFrame)
         {
             if (dockingController != null && (dockingController.IsDocked || dockingController.IsDocking)) return;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d34099e550b10a47aecb1aad99fffbf, type: 3}
   m_Name: Sand Ball
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: sand_ball
   itemName: Sand Ball
   icon: {fileID: 21300000, guid: ada8b6e075266f847ba5b9206e7be39f, type: 3}
   description: It looks like sand but it has a heart? Is this a living creature or

@@ -12,7 +12,7 @@ public class PlanetInteract : MonoBehaviour, IInteractable
         SpaceShip ship = FindFirstObjectByType<SpaceShip>();
         if (planetData == null || ship == null || GameStateManager.Instance == null) return;
 
-        GameStateManager.Instance.SaveShipTransform(ship.transform);
+        GameStateManager.Instance.SaveShipTransform(ship.transform.position, ship.transform.rotation);
         SaveAllCelestialBodies();
         GameStateManager.Instance.SetCurrentPlanet(planetData);
         SceneManager.LoadScene(planetData.surfaceSceneName);

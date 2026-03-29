@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d34099e550b10a47aecb1aad99fffbf, type: 3}
   m_Name: Modular Cube
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: modular_cube
   itemName: Modular Cube
   icon: {fileID: 21300000, guid: bdbec941d8cc09b4f928bbf384af462b, type: 3}
   description: Alien piece of technology. Feels like metal but contains wood... and

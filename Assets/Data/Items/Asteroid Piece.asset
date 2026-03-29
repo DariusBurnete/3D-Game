@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d34099e550b10a47aecb1aad99fffbf, type: 3}
   m_Name: Asteroid Piece
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemID: asteroid_piece
   itemName: Asteroid Piece
   icon: {fileID: 21300000, guid: c214a37364f4dfa43ab00890e500b4aa, type: 3}
   description: Asteroid piece in a never-ending flame. Maybe, fire extinguished,
